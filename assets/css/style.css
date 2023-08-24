@@ -1,0 +1,72 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+label{
+    font-size:small;
+    color: gray;
+    text-align: left;
+}
+
+/* classes */ 
+
+
+.form-background{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    align-content: center;
+    position: fixed;
+    background-color: rgba(0, 0, 255, 0.647);
+    display: none;
+
+}
+
+.form-group{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    
+
+  
+}
+
+
+.form-group-container{
+    margin: auto;
+    align-content: center;
+    display: grid;
+    width: 80%;
+}
+
+
+
+.close-button{
+    float: right;
+    cursor: pointer;
+
+}
+
+
+/* ID */
+
+#button-save{
+    float: right;
+
+}
+
+#productform{
+    width: 50%;
+    margin: auto;
+    margin-top: 1%;
+    align-content: center;
+    background-color: white;
+    border: 4px solid rgb(26, 46, 128);
+    border-radius: 10px;
+    padding: 20px;
+    
+    
+
+}

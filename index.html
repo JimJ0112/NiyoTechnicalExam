@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nityo</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="form-background" id="form-background">
+   
+        <form action="" name="productform" id="productform" enctype="multipart/form-data"> 
+            <span class="close-button" onclick="hideForm()">✕</span>
+            <br/>
+
+            <div class="form-group-container"> 
+                <div class="form-group row">
+                    <label for="productname"> Product Name </label>
+                    <input type="text" name="productname" id="productname" placeholder="Product Name" class="form-control form-control-sm">
+                </div>
+            
+          
+                <div class="form-group row">
+                    <label for="unit"> Unit </label>
+                    <input type="text" name="unit" id="unit" placeholder="Unit" class="form-control form-control-sm">
+                </div>
+
+                <div class="form-group row">
+                    <label for="price"> Price </label>
+                    <input type="text" name="price" id="price" placeholder="Price" class="form-control form-control-sm">
+                </div>
+
+                <div class="form-group row">
+                    <label for="expirydate"> Date of Expiry </label>
+                    <input type="date" name="expirydate" id="expirydate" placeholder="Date of Expiry" class="form-control form-control-sm">
+                </div>
+
+                <div class="form-group row">
+                    <label for="availableinventory"> Available Inventory </label>
+                    <input type="number" name="availableinventory" id="availableinventory" placeholder="Available Inventory" class="form-control form-control-sm">
+                </div>
+
+                <div class="form-group row">
+                    <label for="productImage"> Image  </label>
+                    <input type="file" name="productImage" id="productImage" accept="png,jpg" class="form-control form-control-sm">
+                </div>
+
+            </div>
+
+            <div class="btn btn-success" id="button-save" onclick="addForm()">Save</div>
+
+        </form>
+
+    </div>
+
+    <div>
+        <button onclick="showForm()"> Add Record </button>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <td> Product Name </td>
+                <td> Unit </td>
+                <td> Price </td>
+                <td> Date of Expiration</td>
+                <td> Available Inventory </td>
+                <td></td>
+            </tr>
+        </thead>
+
+        <tbody id="tableTbody">
+
+        </tbody>
+    </table>
+    
+
+
+    <!-- Bootstrap scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <!-- Scripts -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
