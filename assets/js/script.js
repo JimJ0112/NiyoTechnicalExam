@@ -35,11 +35,15 @@ function showhideButtonsCol(){
     var buttonsColState = getComputedStyle(buttonsCol[0]).display;
 
     if(buttonsColState === "none"){
+        document.getElementById("buttonsHeader").style.display = "grid";
         for(var i = 0; i<buttonsCol.length;i++){
             buttonsCol[i].style.display ="grid";
+            
             localStorage.setItem("buttonsColState","grid");
+
         }
     }else{
+        document.getElementById("buttonsHeader").style.display = "none";
         for(var i = 0; i<buttonsCol.length;i++){
             buttonsCol[i].style.display ="none";
             localStorage.setItem("buttonsColState","none");
@@ -110,6 +114,92 @@ function addUpdateForm(){
 
 }
 
+function setTable(dataArray){
+    var dataArray = dataArray;
+    var tableTbody = document.getElementById("tableTbody");
+    tableTbody.innerHTML = "";
+    var buttonsColState = localStorage.getItem("buttonsColState");
+    document.getElementById("tableThead").style.display = "auto";
+
+
+    for(var i = 0; i< dataArray.length; i++){
+        var tr = document.createElement("tr");
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        var td4 = document.createElement("td");
+        var td5 = document.createElement("td");
+        var td6 = document.createElement("td");
+        var td7 = document.createElement("td");
+        var td8 = document.createElement("td");
+ 
+
+
+        td1.setAttribute("class","productNameTD");
+        td2.setAttribute("class","unitTD");
+        td3.setAttribute("class","priceTD");
+        td4.setAttribute("class","dateofexpirationTD");
+        td5.setAttribute("class","availableinventoryTD");
+       
+      
+
+        var image = new Image();
+        image.src = dataArray[i]["imagepath"];
+        image.setAttribute("class","productImage");
+        td7.appendChild(image);
+
+
+        var updateButton = document.createElement("button");
+        updateButton.setAttribute("class","btn btn-primary");
+        updateButton.setAttribute("onclick","setUpdateForm('" + dataArray[i]["itemNo"] + "',"+i+")");
+        updateButton.innerText = "Update";
+
+        var deleteButton = document.createElement("button");
+        deleteButton.setAttribute("class","btn btn-danger");
+        deleteButton.setAttribute("onclick","deleteRecord('" + dataArray[i]["itemNo"] + "')");
+        deleteButton.innerText = "Delete";
+
+        td8.setAttribute("class","buttonsCol");
+        td8.appendChild(updateButton);
+        td8.appendChild(deleteButton);
+
+        
+
+        if(buttonsColState != "" || buttonsColState != null){
+            td8.style.display = buttonsColState;
+            document.getElementById("buttonsHeader").style.display =  buttonsColState;
+
+        } else{
+
+        }
+
+
+
+
+        td1.innerText = dataArray[i]["productname"];
+        td2.innerText = dataArray[i]["unit"];
+        td3.innerText = "Php " + dataArray[i]["price"] + ".00";
+        td4.innerText = dataArray[i]["dateofexpiry"];
+        td5.innerText = dataArray[i]["availableinventory"];
+        td6.innerText ="Php " +  parseFloat(dataArray[i]["availableinventory"]) * parseFloat(dataArray[i]["price"]) + ".00";
+       
+
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+        tr.appendChild(td6);
+        tr.appendChild(td7);
+        tr.appendChild(td8);
+    
+
+
+        tableTbody.appendChild(tr);
+    }
+
+}
 
 
 /* AJAX functions */
@@ -166,9 +256,14 @@ function fetchRecords(){
     xmlhttp.onload = function() {
         if (this.readyState === 4 || this.status === 200){ 
             var dataArray = this.response;
-            dataArray = JSON.parse(dataArray);
-            //console.log(dataArray);
-            setTable(dataArray);
+            if(this.status === 401){
+                document.getElementById("tableThead").style.display = "none";
+                tableTbody.innerText = "No records yet";
+            } else{
+                dataArray = JSON.parse(dataArray);
+                setTable(dataArray);
+            }
+            
         }else{
             console.log(err);
         }      
@@ -178,88 +273,7 @@ function fetchRecords(){
     xmlhttp.send();
 }
 
-function setTable(dataArray){
-    var dataArray = dataArray;
-    var tableTbody = document.getElementById("tableTbody");
-    tableTbody.innerHTML = "";
-    var buttonsColState = localStorage.getItem("buttonsColState");
 
-    for(var i = 0; i< dataArray.length; i++){
-        var tr = document.createElement("tr");
-        var td1 = document.createElement("td");
-        var td2 = document.createElement("td");
-        var td3 = document.createElement("td");
-        var td4 = document.createElement("td");
-        var td5 = document.createElement("td");
-        var td6 = document.createElement("td");
-        var td7 = document.createElement("td");
-        var td8 = document.createElement("td");
- 
-
-
-        td1.setAttribute("class","productNameTD");
-        td2.setAttribute("class","unitTD");
-        td3.setAttribute("class","priceTD");
-        td4.setAttribute("class","dateofexpirationTD");
-        td5.setAttribute("class","availableinventoryTD");
-       
-      
-
-        var image = new Image();
-        image.src = dataArray[i]["imagepath"];
-        image.setAttribute("class","productImage");
-        td7.appendChild(image);
-
-
-        var updateButton = document.createElement("button");
-        updateButton.setAttribute("class","btn btn-primary");
-        updateButton.setAttribute("onclick","setUpdateForm('" + dataArray[i]["itemNo"] + "',"+i+")");
-        updateButton.innerText = "Update";
-
-        var deleteButton = document.createElement("button");
-        deleteButton.setAttribute("class","btn btn-danger");
-        deleteButton.setAttribute("onclick","deleteRecord('" + dataArray[i]["itemNo"] + "')");
-        deleteButton.innerText = "Delete";
-
-        td8.setAttribute("class","buttonsCol");
-        td8.appendChild(updateButton);
-        td8.appendChild(deleteButton);
-
-        
-
-        if(buttonsColState != "" || buttonsColState != null){
-            td8.style.display = buttonsColState;
-        } else{
-
-        }
-
-
-
-
-        td1.innerText = dataArray[i]["productname"];
-        td2.innerText = dataArray[i]["unit"];
-        td3.innerText = dataArray[i]["price"];
-        td4.innerText = dataArray[i]["dateofexpiry"];
-        td5.innerText = dataArray[i]["availableinventory"];
-        td6.innerText = parseFloat(dataArray[i]["availableinventory"]) * parseFloat(dataArray[i]["price"]);
-       
-
-
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-        tr.appendChild(td3);
-        tr.appendChild(td4);
-        tr.appendChild(td5);
-        tr.appendChild(td6);
-        tr.appendChild(td7);
-        tr.appendChild(td8);
-    
-
-
-        tableTbody.appendChild(tr);
-    }
-
-}
 
 function updateRecords(itemNo,productname,unit,price,expirydate,availableinventory,productImage){
     var productname = productname;

@@ -2,13 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Nityo</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/img/logo.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    
+
+    <div class="container-fluid">
+    <center>
+        <img src="assets/img/logo.svg" id="logo-header" />
+    </center>
     <div class="form-background" id="form-background">
    
         <form action="" name="productform" id="productform" enctype="multipart/form-data"> 
@@ -57,33 +63,34 @@
 
     </div>
 
-    <br/>
-    <div>
-        <button onclick="showForm()" class="btn btn-success" id="button-addRecord"> Add Record </button>
-        <button onclick="showhideButtonsCol()" class="btn btn-primary" id="button-addRecord"> Edit </button>
+    
+    <div id="header-buttons">
+        <div onclick="showForm()" class="btn btn-success" id="button-addRecord"> Add Record </div>
+        <div onclick="showhideButtonsCol()" class="btn btn-primary" id="button-editRecord"> Edit </div>
     </div>
     
-    <br/>
-    <table>
-        <thead>
-            <tr>
-                <td> Product Name </td>
-                <td> Unit </td>
-                <td> Price </td>
-                <td> Date of Expiration</td>
-                <td> Available Inventory </td>
-                <td> Available Inventory Cost </td>
-                <td> Product Image</td>
-                <td id="buttonsHeader"> </td>
+    <div class="container-fluid">
+        <table>
+            <thead id="tableThead">
+                <tr scope="col">
+                    <td> Product Name </td>
+                    <td> Unit </td>
+                    <td> Price </td>
+                    <td> Date of Expiration</td>
+                    <td> Available Inventory </td>
+                    <td> Available Inventory Cost </td>
+                    <td> Product Image</td>
+                    <td id="buttonsHeader"></td>
+                </tr>
+            </thead>
 
-            </tr>
-        </thead>
+            <tbody id="tableTbody" scope="row">
 
-        <tbody id="tableTbody">
-
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
     
+    </div>
 
 
     <!-- Bootstrap scripts -->

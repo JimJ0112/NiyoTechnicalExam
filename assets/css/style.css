@@ -10,12 +10,38 @@ label{
 }
 
 table{
-    width: 90%;
+    width: 80%;
     margin: auto;
     align-content: center;
     text-align: center;
     font-size: small;
+    cursor: pointer;
 }
+
+thead td{
+    
+   
+    padding: 10px;
+    
+    border-right: 5px solid white;
+    border-left: 5px solid white;
+
+    border-radius: 10px;
+    font-weight: bolder;
+
+}
+
+
+thead tr{
+    background-color: rgba(173, 216, 230, 0.479);
+
+}
+
+tr:hover{
+    background-color: rgba(173, 216, 230, 0.479);
+}
+
+
 
 
 
@@ -30,8 +56,11 @@ table{
     margin: auto;
     align-content: center;
     position: fixed;
-    background-color: rgba(0, 0, 255, 0.647);
+    background-color: rgba(0, 0, 255, 0.169);
     display: none;
+    z-index: 10;
+    top: 0;
+    left: 0;
 
 }
 
@@ -54,8 +83,8 @@ table{
 }
 
 .productImage{
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
     cursor: pointer;
 }
@@ -72,6 +101,10 @@ table{
     /*display: none;*/
 }
 
+
+.table{
+    width: 10%;
+}
 
 /* ID */
 
@@ -90,10 +123,96 @@ table{
     border-radius: 10px;
     padding: 20px;
     
-    
-
 }
 
 #button-addRecord{
-    float: right;
+    margin: 10px;
+}
+
+#button-editRecord{
+    margin: 10px;
+
+}
+
+#logo-header{
+    width: 200px;
+    height: 100px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#header-buttons{
+    width: 100%;
+    background-color: skyblue;
+    z-index: 5;
+    height: fit-content;
+    display: inline-block;
+    align-items: right;
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+   
+}
+
+#buttonsHeader{
+    border: none;
+    background-color: white;
+    visibility: hidden;
+
+}
+
+
+@media (max-width: 500px) {
+    table{
+        width: 20%;
+        margin: auto;
+        align-content: center;
+        text-align: center;
+        font-size: xx-small;
+        cursor: pointer;
+     
+    }
+
+    
+    thead td{
+        padding: 5px;
+       
+
+    
+        border-radius: 10px;
+        font-weight: bolder;
+    
+    }
+
+    .container-fluid{
+        padding: 0;
+        display: grid;
+    }
+
+    .productImage{
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        cursor: pointer;
+    }
+
+    #productform{
+        width: 100%;
+        margin: auto;
+        margin-top: 1%;
+        align-content: center;
+        background-color: white;
+        border: 4px solid rgb(26, 46, 128);
+        border-radius: 10px;
+        padding: 20px;
+        
+    }
+
+    #buttonsHeader{
+        border: none;
+        background-color: white;
+        visibility: hidden;
+    }
+    
+
 }

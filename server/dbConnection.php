@@ -1,6 +1,6 @@
 <?php
 
-$dbServername = "localhost:3307";
+$dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
 $dbName ="nityotechnicalexam";
