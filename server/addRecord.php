@@ -20,7 +20,7 @@ $productImage  = file_get_contents($_FILES["productImage"]["tmp_name"]);
 
 $Directory = "productImages/".$productname."".$today.".png";
 
-echo file_put_contents($Directory,$productImage);
+file_put_contents($Directory,$productImage);
 
 $query = "INSERT INTO inventory VALUES(0,'$productname','$unit',$price,'$expirydate',$availableinventory,'$Directory')";
 $result = mysqli_query($conn,$query);
